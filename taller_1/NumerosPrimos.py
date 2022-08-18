@@ -1,18 +1,18 @@
-
-def primos():
-    total=0
-    lst = []
-    n = 16
-    while total < 10:
-        for i in range(2,n-1):
-            if (n%i == 0):
-                n +=1
-            else:
-                lst.append(n)
-                total += 1
-                n+=1
-    print(lst)
-    return lst
+def is_prime(n):
+  for i in range(2,n):
+    if (n%i) == 0:
+      return False
+  return True
         
-primos()
+def armar_lista():
+    total = 0 
+    n = 2
+    lst =[]
+    while total<100:
+        if is_prime(n):
+            lst.append(n)
+            total +=1
+        n+=1
+    return lst
 
+print(armar_lista())
