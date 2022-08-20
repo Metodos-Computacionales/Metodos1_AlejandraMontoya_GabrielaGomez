@@ -3,8 +3,8 @@ aux=5
 #funcion
 
 function factorial(){
-    local number=4
-    for i in {1..3}
+    number=5
+    for i in {1..4}
     do
         let number=$(($number*$i))
     done
