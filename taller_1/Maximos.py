@@ -1,22 +1,31 @@
 import numpy as np
-import matplotlib.pyplot as plt 
-plt.style.use('ggplot')
-
-def f(x):
-  return (x+2)*(x-2)*(x-4)
-def df(x):
-  return 3*x**2 -8*x-4
-def seg_df(x):
-  return 6*x-8
-def newton_rapson(f, df, iteraciones, x0):
-  for i in range(iteraciones):
-    x = x0 - f(x0)/ df(x0) 
-    x0 = x
-  return x
-
-def dibujar_raices(f, x_ini, x_fin, raices):
-  x = np.linspace(x_ini, x_fin)
-  plt.axhline( y= 0, color="gray")
-  plt.scatter(raices, df(raices), c = "red", zorder = 2)
-  plt.plot(x, f(x), zorder = 1)
-  plt.show
+import matplotlib.pyplot as plt
+data = np.loadtxt("Datos_Métodos.txt", delimiter=",", skiprows=1)
+X = data[:, 0]
+Y = data[:, 1]
+Xsort= X.copy()
+Xsort.sort()
+def coordenadasysort(X,Y):
+    yfinal=[]
+    for i in range(len(X)):
+        valor= Xsort[i]
+        posicion= np.where(X==valor)
+        coordenaday= Y[posicion]
+        yfinal.append(coordenaday)
+    return yfinal
+def maximos(X,Y):
+    lista= coordenadasysort(X,Y)
+    maximosy= []
+    maximosx=[]
+    for i in range(1, len(lista)-1):
+        if lista[i]>lista[i-1] and lista[i]>lista[i+1]:
+            maximosy.append(lista[i])
+    for i in range(len(maximosy)):
+        valor= maximosy[i]
+        posicion= np.where(Y== valor)
+        coordenadax= X[posicion]
+        maximosx.append(coordenadax)
+    plt.plot(X, Y,color='black')
+    plt.plot(maximosx,maximosy,'o',color='red')
+    return  maximosx, maximosy        
+    
