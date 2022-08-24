@@ -1,14 +1,19 @@
-pass=0
+
 function checkvalue(){
-    if ! [$# -eq "1" ]; then
-        echo "Intente nuevamente"
-        exit 1
-    fi 
-    if ! [$# -eq "1" ]; then
-        echo "Intente nuevamente"
-        exit 1
+    echo -n "Enter a number: "
+    read VAR
+
+    if [[ $VAR -gt 1 ]]
+    then
+    echo "Intente nuevamente"
+    else
+        echo "El numero fue correcto"
+        pass=1
     fi
-    
 }
 
-checkvalue()
+pass=0
+while [ $pass -lt 1 ]
+do
+    checkvalue
+done
