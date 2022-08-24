@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 # In[4]:
 
 
-theta = np.linspace(0, 2*np.pi)
+theta = np.linspace(0, 6*np.pi)
 a=0
 b=1
 r=a+b*theta
