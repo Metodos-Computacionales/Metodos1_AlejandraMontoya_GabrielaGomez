@@ -46,7 +46,7 @@ def maximos(X,Y):
         posicion= np.where(Y== valor)
         coordenadax= X[posicion]
         maximosx.append(coordenadax)
-    plt.plot(X, Y,color='black')
+    plt.plot(X, Y,color='blue')
     plt.plot(maximosx,maximosy,'o',color='red')
     return  maximosx, maximosy        
     
